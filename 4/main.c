@@ -1,9 +1,3 @@
-#include <fcntl.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-
 #include "../occurance.h"
 
 int main(int argc, char **argv) {
@@ -25,8 +19,9 @@ int main(int argc, char **argv) {
             exit(-1);
         } else if (chpid2 == 0) {
             int file = open(argv[1], O_RDONLY);
-            char str[5001];
-            ssize_t n_bytes = read(file, str, 5000);
+            char str[INP_SIZE+1];
+            ssize_t n_bytes = read(file, str, INP_SIZE);
+            close(file);
             str[n_bytes++] = '\0';
             close(fd2[0]);
             write(fd2[1], &n_bytes, sizeof(ssize_t));
@@ -34,7 +29,7 @@ int main(int argc, char **argv) {
             exit(0);
         } else {
             close(fd2[1]);
-            char str[5001];
+            char str[INP_SIZE+1];
             ssize_t len;
             read(fd2[0], &len, sizeof(ssize_t));
             read(fd2[0], str, len);
@@ -53,6 +48,7 @@ int main(int argc, char **argv) {
         char outp_str[100];
         int outp_len = output_ans(ans, outp_str);
         write(file, outp_str, outp_len);
+        close(file)
     }
     return 0;
 }
