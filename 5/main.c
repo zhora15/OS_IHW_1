@@ -8,9 +8,7 @@ int main(int argc, char **argv) {
         printf("An error occurred while creating first child\n");
         exit(-1);
     } else if (chpid1 == 0) {
-        //int fd2[2];
         pid_t chpid2;
-        //pipe(fd2);
         chpid2 = fork();
         if (chpid2 == -1) {
             printf("An error occurred while creating second child\n");
