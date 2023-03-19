@@ -32,8 +32,6 @@ int main(int argc, char **argv){
         write(fd2[1], &n_bytes, sizeof(ssize_t));
         write(fd2[1], str, n_bytes);
 
-        wait(NULL);
-
         close(fd1[1]);
         int ans[CMP_WORD];
         read(fd1[0], ans, sizeof(ans));
