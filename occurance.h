@@ -7,6 +7,7 @@
 #include <unistd.h>
 #include <string.h>
 #include <sys/stat.h>
+#include <sys/wait.h>
 
 #define CMP_WORD 5
 #define INP_SIZE 5000
