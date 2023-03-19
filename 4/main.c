@@ -48,7 +48,7 @@ int main(int argc, char **argv) {
         char outp_str[100];
         int outp_len = output_ans(ans, outp_str);
         write(file, outp_str, outp_len);
-        close(file)
+        close(file);
     }
     return 0;
 }
